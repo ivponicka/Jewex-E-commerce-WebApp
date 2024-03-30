@@ -68,7 +68,7 @@
     <tr th:each="category, i:${categories}">
       <th scope="row" th:text="${i.index+1}">1</th>
       <td th:text="${category.name}">Mark</td>
-      <td><a class="btn" style="background-color: rgb(61, 218, 103);" th:href="@{/admin/categories/updateCategory}">Update</a></td>
+      <td><a class="btn" style="background-color: rgb(61, 218, 103);" th:href="@{/admin/categories/updateCategory/{id} (id=${category.id})}">Update</a></td>
       <td><a class="btn" style="background-color: rgb(216, 77, 77);" th:href="@{/admin/categories/deleteCategory/{id} (id=${category.id})}">Delete</a></td>
       
       </tr>

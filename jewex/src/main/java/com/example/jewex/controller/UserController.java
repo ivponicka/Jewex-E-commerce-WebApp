@@ -62,4 +62,17 @@ public class UserController {
          categoryService.deleteCategory(id);
         return "redirect:/admin/categories";
     }
+
+      @GetMapping("/admin/categories/updateCategory/{id}")
+    public String updateCategory(@PathVariable int id, Model model){
+        Optional <Category> cat = categoryService.findCategory(id);
+        if(cat.isPresent()){
+            model.addAttribute("category", cat.get());
+            return "admin_add_category";
+        } else {
+            return "404";
+        }
+
+       
+    }
 }

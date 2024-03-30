@@ -23,11 +23,13 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public Optional<Category> findCategory(Integer id){
+    public Optional<Category> findCategory(int id){
         return categoryRepository.findById(id);
     }
 
     public void deleteCategory(int id){
         categoryRepository.deleteById(id);
     }
+
+     
 }
