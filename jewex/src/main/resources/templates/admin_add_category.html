@@ -49,24 +49,25 @@
     </header>
 
     <main>
-      <div class="container">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Rings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bracelets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Necklaes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Earrings</a>
-          </li>
-        </ul>
-      </div>
+ <div class="jumbotron text-center">
+   <div class="display-4">Add a new category</div>
+ </div>
+       
+    
+<div class="container-fluid text-center">
+   <form th:action="@{/admin/categories/addCategory}" method="post" th:object="${category}">
+        <input type="text" th:field="*{id}" name="id" hidden>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" th:field="*{name}" required>
+        <div><button class="btn btn-dark" style="background-color: #343a40;" type="submit">Submit</button></div>
+        
+   </form>
 
+</div>
 
+<hr style="padding-top: 50px;">
+<hr style="padding-bottom: 10px; background-color: rgb(94, 91, 91);">
+      
 
       <section id="photos">
         <div class="photos-list flex">
@@ -75,9 +76,7 @@
           </div>
         </div>
       </section>
-      <section id="map">
-        <img src="images/mapa.jpg" alt="location map" class="map" />
-      </section>
+     
     </main>
 
     <footer id="footer">

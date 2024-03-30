@@ -49,22 +49,36 @@
     </header>
 
     <main>
-      <div class="container">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Rings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bracelets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Necklaes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Earrings</a>
-          </li>
-        </ul>
-      </div>
+ <div class="jumbotron text-center">
+   <div class="display-4">Welcome back!</div>
+ </div>
+       
+    
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-sm-6 pt-4" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">Categories</h4>
+                    <p class="card-text">Manage the categories section here.</p>
+                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-primary">Manage</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 pt-4" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">Products</h4>
+                    <p class="card-text">Manage all the products here.</p>
+                    <a href="#" th:href="@{/admin/products}" class="card-link btn btn-primary">Manage</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 
@@ -75,9 +89,7 @@
           </div>
         </div>
       </section>
-      <section id="map">
-        <img src="images/mapa.jpg" alt="location map" class="map" />
-      </section>
+     
     </main>
 
     <footer id="footer">

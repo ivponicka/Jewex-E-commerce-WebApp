@@ -626,3 +626,13 @@ button {
 .grey-background {
   background-color: var(--dgrey);
 }
+
+/*admin home */
+.admin-home {
+  height: 200px;
+  margin: none;
+  background-color: grey;
+  color: white;
+  text-align: center;
+  font-size: 46px;
+}

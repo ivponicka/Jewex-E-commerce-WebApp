@@ -26,58 +26,58 @@
           <div class="head-top-right-icon flex">
             <ul class="nav">
               <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}" href="#">home</a>
+                <a class="nav-link" th:href="@{/}" href="#">my profile</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
-              </li>
+            
               <li class="nav-item active">
                 <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
-              </li>
-              <li class="nav-item active">
-                <span class="nav-link" th:text="${cartCount}">0</span>
-              </li>
+             
+             
             </ul>
           </div>
 
     </header>
 
     <main>
-      <div class="container">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Rings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bracelets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Necklaes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Earrings</a>
-          </li>
-        </ul>
-      </div>
+ <div class="jumbotron text-center" style="background-color: rgb(94, 91, 91); color: white;">
+   <div class="display-4" >Welcome back!</div>
+ </div>
+       
+    
+<div class="container-fluid text-center">
+    <div class="row">
+        <div class="col-sm-6 pt-4" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">Categories</h4>
+                    <p class="card-text">Manage the categories section here.</p>
+                    <a href="#" th:href="@{/admin/categories}" class="card-link btn btn-primary">Manage</a>
 
-
-
-      <section id="photos">
-        <div class="photos-list flex">
-          <div class="photo-item">
-            <img src="images/photos.jpg" alt="" />
-          </div>
+                </div>
+            </div>
         </div>
-      </section>
-      <section id="map">
-        <img src="images/mapa.jpg" alt="location map" class="map" />
-      </section>
+        <div class="col-sm-6 pt-4" >
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h4 class="card-title">Products</h4>
+                    <p class="card-text">Manage all the products here.</p>
+                    <a href="#" th:href="@{/admin/products}" class="card-link btn btn-primary">Manage</a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr style="padding-top: 50px;">
+<hr style="padding-bottom: 10px; background-color: rgb(94, 91, 91);">
+      
+     
     </main>
 
     <footer id="footer">
