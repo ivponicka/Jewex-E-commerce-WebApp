@@ -79,6 +79,14 @@ button {
   justify-content: center;
 }
 
+.about-us {
+  padding: 50px 150px;
+}
+
+.about-us p {
+  padding: 30px;
+}
+
 .header-top {
   justify-content: space-between;
   height: 112px;

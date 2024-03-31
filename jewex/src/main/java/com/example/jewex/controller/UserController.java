@@ -23,6 +23,11 @@ public class UserController {
             return "index";
         }
 
+         @GetMapping("/about")
+        public String about(){
+            return "about";
+        }
+
       @GetMapping("/shop")
         public String shopPage(Model model){
             model.addAttribute("categories", categoryService.getAllCategories());
