@@ -42,6 +42,7 @@ public class UserController {
             model.addAttribute("product", productService.getProductById(id).get());
             return "view_product";
         }
+    
         
 }
 

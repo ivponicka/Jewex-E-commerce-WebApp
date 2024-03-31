@@ -32,6 +32,7 @@ public void addProduct(Product product){
      return productRepository.findById(id);
    }
 
+ 
    public List<Product> getAllProductsByCategoryId(int id){
      return productRepository.findAllByCategory_Id(id);
    }

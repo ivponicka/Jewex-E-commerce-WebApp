@@ -227,6 +227,7 @@ button {
 
 .services-item {
   text-align: center;
+  padding: 40px;
 }
 
 .services-item i {
@@ -238,10 +239,9 @@ button {
   font-size: 14px;
 }
 
-.services-item .tetx {
+.services-item .text {
   max-width: 315px;
-  margin-right: auto;
-  margin-left: auto;
+  text-align: justify;
 }
 
 .services-list {
