@@ -122,5 +122,26 @@ public class UserController {
         return "redirect:/admin/products";
     }
  
+    @GetMapping("/admin/products/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        productService.deleteProductById(id);
+        return "redirect:/admin/products";
+    }
+    
+    @GetMapping("/admin/products/updateProduct/{id}")
+    public String updateProduct(@PathVariable int id, Model model) {
+        Product product = productService.getProductById(id).get();
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(product.getId());
+        productDTO.setName(product.getName());
+        productDTO.setPrice(product.getPrice());
+        productDTO.setDescription(product.getDescription());
+        productDTO.setCategoryID(product.getCategory().getId());
+        productDTO.setImageName(product.getImageName());
+        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("productDTO", productDTO);
+        return "admin_add_product";
+    }
+    
     
 }
