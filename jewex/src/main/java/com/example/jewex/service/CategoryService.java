@@ -3,10 +3,8 @@ package com.example.jewex.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.example.jewex.model.Category;
 import com.example.jewex.repository.CategoryRepository;
 
@@ -19,7 +17,9 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public void addCategory(Category category){
+  
+	@SuppressWarnings("null")
+	public void addCategory(Category category){
         categoryRepository.save(category);
     }
 
@@ -30,6 +30,8 @@ public class CategoryService {
     public void deleteCategory(int id){
         categoryRepository.deleteById(id);
     }
+
+  
 
      
 }

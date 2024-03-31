@@ -49,46 +49,68 @@
     </header>
 
     <main>
- <div class="jumbotron text-center">
-   <div class="display-4">Welcome back!</div>
- </div>
-       
-    
-<div class="container-fluid text-center">
-    <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Product name</th>
-      <th scope="col">Category</th>
-      <th scope="col">Image</th>
-      <th scope="col">Description</th>
-      <th scope="col">Action</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr th:each="product, i:${products}">
-      <th scope="row" th:text="${i.index+1}">1</th>
-      <td th:text="${product.name}">Mark</td>
-      <td th:text="${product.category.name}">Mark</td>
-      <td><img src="" height="100px" width="100px"  th:src="@{${'/images/' + product.imageName}}"></td>
-      <td th:text="${product.description}">Mark</td>
-      <td><a class="btn" style="background-color: rgb(155, 189, 164);" th:href="@{/admin/products/updateProduct/{id} (id=${product.id})}">Update</a>
-      <a class="btn" style="background-color: rgb(173, 93, 93);" th:href="@{/admin/products/deleteProduct/{id} (id=${product.id})}">Delete</a>
-      </td>
-     
-      
-      </tr>
-  
-  </tbody>
-</table>
-<a class="btn btn-dark" style="background-color: #343a40;" th:href="@{/admin/products/addProduct}">Add new product</a>
-</div>
+      <div class="jumbotron text-center">
+        <div class="display-4">Add a new category</div>
+      </div>
 
-<hr style="padding-top: 50px;">
-<hr style="padding-bottom: 10px; background-color: rgb(94, 91, 91);">
-      
+
+      <div class="container text-center ">
+
+        <form th:action="@{/admin/products/addProduct}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-sm-5">
+              <div class="form-group">
+                <input type="text" th:field="*{id}" name="id" hidden>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" th:field="*{name}" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" name="price" id="price" th:field="*{price}" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="category">Category:</label>
+                <select name="select_category" id="" class="form-control" th:field="*{categoryID}">
+                  <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" rows="3" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <p>Product image</p>
+              <div class="custom-file">
+                <label for="productImage" class="custom-file-label">Choose file</label>
+                <input type="file" class="custom-file-input" name="productImage" accept="image/jpeg, image/png"
+                  id="productImage">
+              </div>
+              <div class="form-group">
+                <br> <br>
+                <img th:src="@{${'images/' + productDTO.imageName}}" id="imgPreview" src="#" height="100px"
+                  width="100px">
+                   <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
+              </div>
+              
+              
+             
+            </div>
+
+          </div>
+<hr>
+              <div class="form-group"><button class="btn btn-dark" style="background-color: #343a40;"
+                  type="submit">Submit</button></div>
+        </form>
+
+      </div>
+
+      <hr style="padding-top: 50px;">
+      <hr style="padding-bottom: 10px; background-color: rgb(94, 91, 91);">
+
 
       <section id="photos">
         <div class="photos-list flex">
@@ -97,7 +119,7 @@
           </div>
         </div>
       </section>
-     
+
     </main>
 
     <footer id="footer">

@@ -60,16 +60,18 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Category name</th>
-      <th scope="col">Update</th>
-      <th scope="col">Delete</th>
+      <th scope="col">Action</th>
+      
     </tr>
   </thead>
   <tbody>
     <tr th:each="category, i:${categories}">
       <th scope="row" th:text="${i.index+1}">1</th>
       <td th:text="${category.name}">Mark</td>
-      <td><a class="btn" style="background-color: rgb(61, 218, 103);" th:href="@{/admin/categories/updateCategory/{id} (id=${category.id})}">Update</a></td>
-      <td><a class="btn" style="background-color: rgb(216, 77, 77);" th:href="@{/admin/categories/deleteCategory/{id} (id=${category.id})}">Delete</a></td>
+      <td><a class="btn" style="background-color: rgb(155, 189, 164);" th:href="@{/admin/categories/updateCategory/{id} (id=${category.id})}">Update</a>
+      <a class="btn" style="background-color: rgb(173, 93, 93);" th:href="@{/admin/categories/deleteCategory/{id} (id=${category.id})}">Delete</a>
+      </td>
+     
       
       </tr>
   
