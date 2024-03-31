@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.jewex.service.CategoryService;
 import com.example.jewex.service.ProductService;
 
+
 @Controller
 public class UserController {
     @Autowired
@@ -36,5 +37,11 @@ public class UserController {
             return "shop";
         }
     
+        @GetMapping("/shop/viewproduct/{id}")
+        public String getMethodName(@PathVariable int id, Model model) {
+            model.addAttribute("product", productService.getProductById(id).get());
+            return "view_product";
+        }
+        
 }
 
