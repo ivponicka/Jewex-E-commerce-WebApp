@@ -37,7 +37,13 @@
                     <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/register}" href="#">register</a>
+                    <a
+                      class="nav-link"
+                      sec:authorize="isAnonymous()"
+                      th:href="@{/register}"
+                      href="#"
+                      >register</a
+                    >
                   </li>
                   <li class="nav-item active">
                     <a
@@ -58,10 +64,21 @@
                     >
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+                    <a
+                      class="nav-link"
+                      th:href="@{/cart}"
+                      sec:authorize="isAuthenticated()"
+                      href="#"
+                      >cart</a
+                    >
                   </li>
                   <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}">0</span>
+                    <span
+                      class="nav-link"
+                      th:text="${cartCount}"
+                      sec:authorize="isAuthenticated()"
+                      >0</span
+                    >
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link" th:href="@{/about}" href="#">about</a>

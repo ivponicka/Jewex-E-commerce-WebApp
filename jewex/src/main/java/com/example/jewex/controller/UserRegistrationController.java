@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.jewex.dto.UserRegistrationDTO;
+import com.example.jewex.global.GlobalData;
 import com.example.jewex.model.User;
 import com.example.jewex.service.UserService;
 
@@ -27,19 +28,17 @@ public class UserRegistrationController {
         this.userService = userService;
     }
 
-    // handler method to handle home page request
     @GetMapping("/index")
     public String home(){
         return "index";
     }
 
-    
    @GetMapping("/login")
     public String login(){
+        GlobalData.cart.clear();
         return "login";
     }
     
-    // handler method to handle user registration form request
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
         // create model object to store form data
@@ -48,8 +47,6 @@ public class UserRegistrationController {
         return "register";
     }
 
-    
-    // handler method to handle user registration form submit request
     @SuppressWarnings("null")
     @PostMapping("/register/save")
     public String registration(@Valid @ModelAttribute("user") UserRegistrationDTO userRegistrationDTO,
@@ -61,12 +58,10 @@ public class UserRegistrationController {
             result.rejectValue("email", null,
                     "There is already an account registered with the same email");
         }
-
         if(result.hasErrors()){
             model.addAttribute("user", userRegistrationDTO);
             return "/register";
         }
-
         userService.saveUser(userRegistrationDTO);
         return "redirect:/register?success";
     }

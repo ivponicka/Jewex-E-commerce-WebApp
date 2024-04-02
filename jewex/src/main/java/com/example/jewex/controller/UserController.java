@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.example.jewex.global.GlobalData;
 import com.example.jewex.service.CategoryService;
 import com.example.jewex.service.ProductService;
 
@@ -20,6 +21,7 @@ public class UserController {
 
     @GetMapping({"/", "/home"})
         public String homePage(Model model){
+            model.addAttribute("cartCount", GlobalData.cart.size());
             return "index";
         }
 
@@ -32,6 +34,7 @@ public class UserController {
         public String shopPage(Model model){
             model.addAttribute("categories", categoryService.getAllCategories());
             model.addAttribute("products", productService.getAllProducts());
+            model.addAttribute("cartCount", GlobalData.cart.size());
             return "shop";
         }
 
@@ -39,12 +42,14 @@ public class UserController {
         public String showProductsByCategories(@PathVariable int id, Model model){
             model.addAttribute("categories", categoryService.getAllCategories());
             model.addAttribute("products", productService.getAllProductsByCategoryId(id));
+            model.addAttribute("cartCount", GlobalData.cart.size());
             return "shop";
         }
     
         @GetMapping("/shop/viewproduct/{id}")
         public String getMethodName(@PathVariable int id, Model model) {
             model.addAttribute("product", productService.getProductById(id).get());
+            model.addAttribute("cartCount", GlobalData.cart.size());
             return "view_product";
         }
     

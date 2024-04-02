@@ -59,6 +59,14 @@ button {
   color: var(--dgrey);
 }
 
+.small-button {
+  height: 15px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .brand-name {
   letter-spacing: 5px;
   font-size: 1.3rem;

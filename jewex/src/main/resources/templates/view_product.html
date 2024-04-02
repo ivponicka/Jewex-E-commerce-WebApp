@@ -63,7 +63,7 @@
              <h6><em><span th:text="${product.category.name}"></span></em></h6>
               <h5>€<span th:text="${product.price}"></span></h5>
               <h5><span th:text="${product.description}"></span></h5>
-              <a class="btn btn-dark" style="background-color: #343a40;" th:href="@{/admin/products/addProduct}">Add to cart</a>
+              <a class="btn btn-dark" style="background-color: #343a40;" th:href="@{/addToCard/{id} (id=${product.id})}">Add to cart</a>
           </div>
         </div>
       </div>
