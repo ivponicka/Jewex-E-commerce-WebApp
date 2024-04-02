@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <title>Jev beauty</title>
+</head>
+
+<body>
+    <div class="holder">
+        <header class="xx">
+            <div class="page">
+                <div class="header-top flex">
+                    <div class="head-top-left-icon flex">
+                        <h1>jev.beauty</h1>
+                    </div>
+                    <div class="head-top-right-icon flex">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto"></ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" th:href="@{/admin}" href="#">admin</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}"
+                                        href="#">login</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}"
+                                        href="#">logout</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <span class="nav-link" th:text="${cartCount}">0</span>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" th:href="@{/about}" href="#">about</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    <div class="about-us">
+<div class="container">
+    
+    <div class="col-sm-6">
+        <div th:if="${param.success}">
+            <div class="alert alert-info">You've successfully registered!</div>
+
+        </div>
+        <h3 style="margin-top: 10px">Sign Up Now</h3>
+        <p>Please fill out this to register</p>
+        <form th:action="@{/register/save}" th:object="${user}" method="post">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName"  th:field="*{firstName}" required placeholder="Your Firstname" class="form-control form-control-lg">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName"   th:field="*{lastName}" required placeholder="Your Lastname" class="form-control form-control-lg">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control form-control-lg" th:field="*{email}" required minlength="6" placeholder="Email" name="email" id="email"
+                       aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                    anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control form-control-lg"  th:field="*{password}" required placeholder="Password" name="password"
+                       id="password">
+            </div>
+
+             <button class="btn btn-primary" type="submit">Register</button>
+            
+        </form>
+        <span style="margin-top: 10px">Already have an account <a class="linkControl" 
+                                                                      th:href="@{/login}">Login here</a></span>
+    </div>
+</div>
+                    </div>
+            
+                </main>
+
+                <footer id="footer">
+                    <div class="page">
+                        <div class="footer-list flex">
+                            <div class="footer-item one">
+                                <a href="#">
+                                    <img src="images/logo.jpg" alt="" class="logo" />
+                                </a>
+                                <p class="text">
+                                    Explore stunning jewellery online. From elegant diamonds to
+                                    captivating gemstones, find the perfect piece for any occasion.
+                                </p>
+                                <form>
+                                    <div class="form-element flex">
+                                        <input type="email" class="form-control" placeholder="Your e-mail" />
+                                        <button type="submit" class="subs-btn">Subscribe</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="footer-item">
+                                <h2>Products</h2>
+                                <ul>
+                                    <li><a href="#">Prices drop</a></li>
+                                    <li><a href="#">New products</a></li>
+                                    <li><a href="#">Best sales</a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-item">
+                                <h2>Information</h2>
+                                <ul>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Delivery</a></li>
+                                    <li><a href="#">Payment</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="#">Sitemap</a></li>
+                                    <li><a href="#">Stores</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="footer-item">
+                                <h2>Your account</h2>
+                                <ul>
+                                    <li><a href="#">Addresses</a></li>
+                                    <li><a href="#">Credit sales</a></li>
+                                    <li><a href="#">Orders</a></li>
+                                    <li><a href="#">Personal info</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="copyright-text">
+                        <div class="page">
+                            <p class="text">2022 - All rights reserved</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+            <script src="js/js.js"></script>
+</body>
+
+</html>
