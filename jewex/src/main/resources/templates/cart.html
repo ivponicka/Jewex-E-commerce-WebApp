@@ -18,37 +18,35 @@
 <body>
 
   <header class="">
-      <div class="page">
-        <div class="header-top flex">
-          <div class="head-top-left-icon flex">
-            <h1>jev.beauty</h1>
-          </div>
-          <div class="head-top-right-icon flex">
-            <ul class="nav">
+    <div class="page">
+      <div class="header-top flex">
+        <div class="head-top-left-icon flex">
+          <h1>jev.beauty</h1>
+        </div>
+        <div class="head-top-right-icon flex">
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/}" href="#">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
+            </li>
+
+
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/cart}" href="#"> Cart (<span th:text="${cartCount}">0</span>)</a>
+            </li>
+          
+
+            <li class="nav-item active">
+              <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><b>Logout</b></a>
+            </li>
               <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}" href="#">home</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
-              </li>
-              <li class="nav-item active">
-                <span class="nav-link" th:text="${cartCount}">0</span>
-              </li>
-              <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}" href="#">about</a>
-                  </li>
-            </ul>
-          </div>
-    </header>
+              <a class="nav-link" th:href="@{/about}" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+  </header>
   <div class="about-us">
     <div class="container">
       <div class="row">
@@ -74,7 +72,8 @@
                     <div class="mt-5 d-flex justify-content-between align-items-center">
                       <div>
                         <a href="#!" th:href="@{/cart/removeItem/{index}(index=${iStat.index})}" type="button"
-                          class="card-link-secondary small text-uppercase mr-3" style="color: red;"><i class="fas fa-trash-alt mr-1"></i>
+                          class="card-link-secondary small text-uppercase mr-3" style="color: red;"><i
+                            class="fas fa-trash-alt mr-1"></i>
                           Remove </a>
                       </div>
                       <p class="mb-0"><span><strong>€ <span th:text="${item.price}"></span></strong></span></p>
@@ -88,7 +87,7 @@
             </div>
           </div>
         </div>
-          <div class="col-lg-4">
+        <div class="col-lg-4">
           <div class="card mb-4">
             <div class="card-body">
               <h5 class="mb-3">The total amount </h5>
@@ -114,7 +113,7 @@
 
             </div>
           </div>
-         
+
 
         </div>
         <!--Grid column-->

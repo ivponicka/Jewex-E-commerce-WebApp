@@ -28,13 +28,13 @@
                 <ul class="navbar-nav mr-auto"></ul>
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">home</a>
+                    <a class="nav-link" th:href="@{/}" href="#">Home</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/admin}" href="#">admin</a>
+                    <a class="nav-link" th:href="@{/admin}" href="#">Admin</a>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                    <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                   </li>
                   <li class="nav-item active">
                     <a
@@ -42,7 +42,7 @@
                       sec:authorize="isAnonymous()"
                       th:href="@{/register}"
                       href="#"
-                      >register</a
+                      >Register</a
                     >
                   </li>
                   <li class="nav-item active">
@@ -51,7 +51,21 @@
                       sec:authorize="isAnonymous()"
                       th:href="@{/login}"
                       href="#"
-                      >login</a
+                      >Login</a
+                    >
+                  </li>
+                    <li class="nav-item active">
+                    <a
+                      class="nav-link"
+                      th:href="@{/cart}"
+                      sec:authorize="isAuthenticated()"
+                      href="#"
+                      >Cart (<span
+                      class="nav-link"
+                      th:text="${cartCount}"
+                      sec:authorize="isAuthenticated()"
+                      >0</span
+                    >)</a
                     >
                   </li>
                   <li class="nav-item active">
@@ -60,28 +74,12 @@
                       sec:authorize="isAuthenticated()"
                       th:href="@{/logout}"
                       href="#"
-                      >logout</a
+                      ><b>Logout</b></a
                     >
                   </li>
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link"
-                      th:href="@{/cart}"
-                      sec:authorize="isAuthenticated()"
-                      href="#"
-                      >cart</a
-                    >
-                  </li>
-                  <li class="nav-item active">
-                    <span
-                      class="nav-link"
-                      th:text="${cartCount}"
-                      sec:authorize="isAuthenticated()"
-                      >0</span
-                    >
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}" href="#">about</a>
+                
+                                  <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/about}" href="#">About</a>
                   </li>
                 </ul>
               </div>
@@ -396,6 +394,8 @@
             </div>
           </div>
         </section>
+        -->
+
         <section id="banner" class="flex">
           <div class="banner-left flex">
             <img src="images/jbox.jfif" alt="banner img" />

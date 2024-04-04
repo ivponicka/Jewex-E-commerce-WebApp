@@ -58,10 +58,12 @@ public class UserRegistrationController {
             result.rejectValue("email", null,
                     "There is already an account registered with the same email");
         }
+
         if(result.hasErrors()){
             model.addAttribute("user", userRegistrationDTO);
             return "/register";
         }
+
         userService.saveUser(userRegistrationDTO);
         return "redirect:/register?success";
     }

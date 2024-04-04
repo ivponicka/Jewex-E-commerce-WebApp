@@ -26,25 +26,23 @@
           <div class="head-top-right-icon flex">
             <ul class="nav">
               <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}" href="#">home</a>
+                <a class="nav-link" th:href="@{/}" href="#">Home</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
+                <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
+                <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
               </li>
+             
               <li class="nav-item active">
-                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
+                <a class="nav-link" th:href="@{/cart}" href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
+               <li class="nav-item active">
+                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
               </li>
-              <li class="nav-item active">
-                <span class="nav-link" th:text="${cartCount}">0</span>
-              </li>
-              <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}" href="#">about</a>
+                         <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/about}" href="#">About</a>
                   </li>
             </ul>
           </div>
