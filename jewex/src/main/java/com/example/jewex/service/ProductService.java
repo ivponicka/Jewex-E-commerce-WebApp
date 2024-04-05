@@ -1,6 +1,8 @@
 package com.example.jewex.service;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,8 +21,9 @@ public class ProductService {
     return productRepository.findAll();
    }
    
-   @SuppressWarnings("null")
+
 public void addProduct(Product product){
+    product.setCreationDate(LocalDate.now());
       productRepository.save(product);
    }
 
@@ -38,4 +41,13 @@ public void addProduct(Product product){
    }
 
    
+    public List<Product> getProductsAddedLastFourWeeks() {
+        // Calculate the start date (4 weeks ago) and end date (today)
+        LocalDate startDate = LocalDate.now().minusWeeks(4);
+        LocalDate endDate = LocalDate.now();
+        
+        // Retrieve products added within the specified date range
+        return productRepository.findByCreationDateBetween(startDate, endDate);
+    }
+
 }

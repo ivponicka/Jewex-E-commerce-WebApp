@@ -30,10 +30,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) ->
                         authorize
                                 
-                                .requestMatchers("/", "/index", "/shop/**", "/js/**", "/images/**", "/register", "register/**", "/css/**").permitAll()
+                                .requestMatchers("/", "/index", "/admin","/shop/**", "/js/**", "/images/**", "/register", "register/**", "/css/**").permitAll()
                                 .requestMatchers("/login/**").hasRole("USER")
-                                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                                 .anyRequest().authenticated()
+                                                                .anyRequest().authenticated()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")

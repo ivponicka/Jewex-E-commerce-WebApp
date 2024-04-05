@@ -15,6 +15,7 @@
 
     <title>Jev beauty</title>
   </head>
+
   <body>
     <div class="holder">
       <header class="header">
@@ -54,18 +55,18 @@
                       >Login</a
                     >
                   </li>
-                    <li class="nav-item active">
+                  <li class="nav-item active">
                     <a
                       class="nav-link"
                       th:href="@{/cart}"
                       sec:authorize="isAuthenticated()"
                       href="#"
                       >Cart (<span
-                      class="nav-link"
-                      th:text="${cartCount}"
-                      sec:authorize="isAuthenticated()"
-                      >0</span
-                    >)</a
+                        class="nav-link"
+                        th:text="${cartCount}"
+                        sec:authorize="isAuthenticated()"
+                        >0</span
+                      >)</a
                     >
                   </li>
                   <li class="nav-item active">
@@ -77,8 +78,8 @@
                       ><b>Logout</b></a
                     >
                   </li>
-                
-                                  <li class="nav-item active">
+
+                  <li class="nav-item active">
                     <a class="nav-link" th:href="@{/about}" href="#">About</a>
                   </li>
                 </ul>
@@ -181,7 +182,7 @@
             </div>
           </div>
         </section>
-
+        <hr />
         <section id="categories">
           <div class="page">
             <div class="categories-list flex">
@@ -209,11 +210,11 @@
             </div>
           </div>
         </section>
-
+        <hr />
         <section id="trending">
           <div class="page">
             <div class="section-heading">
-              <h2>Top trending</h2>
+              <h2>New arrivals</h2>
               <div class="line"></div>
               <p class="text">
                 Discover our top trending jewellery pieces, curated to reflect
@@ -222,180 +223,31 @@
                 making waves in the world of jewellery.
               </p>
             </div>
-
             <div class="trending-content">
-              <div class="trending-filter-btns flex">
-                <button type="button" class="filter-btn">New Prodcuts</button>
-                <button type="button" class="filter-btn">Prices drop</button>
-                <button type="button" class="filter-btn">Best sales</button>
-              </div>
               <div class="trending-filter-list flex">
-                <div class="trending-item" data-product="1">
-                  <div class="trending-img">
-                    <img src="images/t1.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Eye of the sun</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price"></span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="2">
-                  <div class="trending-img">
-                    <img src="images/t2.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Sun brisk</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price">$1200</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="3">
-                  <div class="trending-img">
-                    <img src="images/t3.jfif" alt="trending img" />
-                    <span class="discount-text flex">-30%</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Heart</h3>
-                    <span class="price">$689.00</span>
-                    <span class="old-price">$999</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="1">
-                  <div class="trending-img">
-                    <img src="images/t4.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Queen's eyes</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price"></span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="3">
-                  <div class="trending-img">
-                    <img src="images/t5.jfif" alt="trending img" />
-                    <span class="discount-text flex">-30%</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Eye of the storm</h3>
-                    <span class="price">$689.00</span>
-                    <span class="old-price">$999</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="1">
-                  <div class="trending-img">
-                    <img src="images/t6.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Gold earrings</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price"></span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="3">
-                  <div class="trending-img">
-                    <img src="images/t7.jfif" alt="trending img" />
-                    <span class="discount-text flex">-30%</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Rose</h3>
-                    <span class="price">$689.00</span>
-                    <span class="old-price">$999</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="2">
-                  <div class="trending-img">
-                    <img src="images/t8.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Snow flake</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price">$1200</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="3">
-                  <div class="trending-img">
-                    <img src="images/t9.jfif" alt="trending img" />
-                    <span class="discount-text flex">-30%</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Silver bracelet</h3>
-                    <span class="price">$689.00</span>
-                    <span class="old-price">$999</span>
-                  </div>
-                </div>
-
-                <div class="trending-item" data-product="2">
-                  <div class="trending-img">
-                    <img src="images/t10.jfif" alt="trending img" />
-                    <span class="new-text flex">New</span>
-                    <div class="trending-btns flex">
-                      <a href="#" class="btn">quick view</a>
-                      <a href="#" class="btn">more details</a>
-                    </div>
-                  </div>
-                  <div class="trending-item-price">
-                    <h3>Golden bracelet</h3>
-                    <span class="price">$789.00</span>
-                    <span class="old-price">$1200</span>
-                  </div>
+                <div
+                  th:each="product, iterStat : ${newProducts.subList(0, 4)}"
+                  class="trending-box"
+                >
+                  <div class="trending-img"></div>
+                  <img
+                    th:src="@{/images/{imageName}(imageName=${product.imageName})}"
+                    alt="Product Image"
+                  />
+                  <h3 th:text="${product.name}" class="new-text flex"></h3>
+                  <p th:text="${product.description}" class="new-text flex"></p>
+                  <p
+                    th:text="'Price: $' + ${product.price}"
+                    class="new-text flex"
+                  ></p>
                 </div>
               </div>
-              <a href="#" class="btn">All products</a>
+              <a href="#" th:href="@{/shop}" class="btn">All products</a>
             </div>
           </div>
         </section>
-        -->
-
+        <br />
+        <hr />
         <section id="banner" class="flex">
           <div class="banner-left flex">
             <img src="images/jbox.jfif" alt="banner img" />
@@ -412,7 +264,7 @@
             </div>
           </div>
         </section>
-
+        <hr />
         <section id="photos">
           <div class="photos-list flex">
             <div class="photo-item">
