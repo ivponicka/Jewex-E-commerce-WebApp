@@ -285,14 +285,11 @@ button {
   left: 70%;
 }
 
-.trending-img img {
-  width: 350px;
-}
-
 /* trending */
 
 #trending {
-  margin-top: 110xp;
+
+  margin: 100px 100px 0px 100px;
 }
 
 .section-heading {
@@ -318,11 +315,18 @@ button {
 
 .trending-filter-list {
   margin-bottom: 20px;
+<<<<<<< HEAD
   padding-left: 150px;
   padding-right: 150px;
   /* width: 400px; */
   display: flex;
   align-items: center;
+=======
+  /* padding-left: 150px; */
+  /* width: 400px; */
+  display: flex;
+  align-items: inherit;
+>>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
   justify-content: space-between;
 }
 
@@ -360,12 +364,25 @@ button {
   border-top-color: white;
 }
 
+<<<<<<< HEAD
+=======
+.trending-item {
+  margin: 0 16px 33px 16px;
+  width: calc(20% - 33px);
+}
+
+.trending-section {
+  position: relative;
+}
+
+>>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
 .trending-img {
   position: relative;
   width: 300px;
   height: 300px;
 }
 
+<<<<<<< HEAD
 .trending-img::after {
   content: "";
   position: absolute;
@@ -386,6 +403,23 @@ button {
   height: 290px;
   justify-content: center;
   text-align: center;
+=======
+.trending-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+>>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
+}
+
+.trending-box {
+  position: relative;
+}
+
+.trending-box img {
+  width: 280px;
+  height: 280px;
+  display: block;
+  object-fit: cover;
 }
 
 .new-text .discount-text {

@@ -182,7 +182,7 @@
             </div>
           </div>
         </section>
-
+        <hr />
         <section id="categories">
           <div class="page">
             <div class="categories-list flex">
@@ -210,12 +210,21 @@
             </div>
           </div>
         </section>
+<<<<<<< HEAD
         <section id="trending">
           <div class="page">
             <div class="section-heading">
               <h2>Fresh Finds: Newest Additions to Our Collection</h2>
               <h5><em>---- products added in the last 4 weeks ----</em></h5>
 
+=======
+        <hr />
+        <section id="trending">
+          <div class="page">
+            <div class="section-heading">
+              <h2>New arrivals</h2>
+              <div class="line"></div>
+>>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
               <p class="text">
                 Discover our top trending jewellery pieces, curated to reflect
                 the latest styles and preferences. Stay ahead of the fashion
@@ -223,11 +232,11 @@
                 making waves in the world of jewellery.
               </p>
             </div>
-
             <div class="trending-content">
               <div class="trending-filter-list flex">
                 <div
                   th:each="product, iterStat : ${newProducts.subList(0, 4)}"
+<<<<<<< HEAD
                   class="trending-img"
                 >
                   <img
@@ -258,6 +267,30 @@
                   >All products</a
                 >
         <section id="banner" class="flex" style="padding-top: 250px">
+=======
+                  class="trending-box"
+                >
+                  <div class="trending-img"></div>
+                  <img
+                    th:src="@{/images/{imageName}(imageName=${product.imageName})}"
+                    alt="Product Image"
+                  />
+                  <h3 th:text="${product.name}" class="new-text flex"></h3>
+                  <p th:text="${product.description}" class="new-text flex"></p>
+                  <p
+                    th:text="'Price: $' + ${product.price}"
+                    class="new-text flex"
+                  ></p>
+                </div>
+              </div>
+              <a href="#" th:href="@{/shop}" class="btn">All products</a>
+            </div>
+          </div>
+        </section>
+        <br />
+        <hr />
+        <section id="banner" class="flex">
+>>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
           <div class="banner-left flex">
             <img src="images/jbox.jfif" alt="banner img" />
           </div>
@@ -273,7 +306,7 @@
             </div>
           </div>
         </section>
-
+        <hr />
         <section id="photos">
           <div class="photos-list flex">
             <div class="photo-item">
