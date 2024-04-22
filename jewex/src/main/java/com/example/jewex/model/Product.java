@@ -1,5 +1,9 @@
 package com.example.jewex.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +29,8 @@ public class Product {
     private double price;
     private String description;
     private String imageName;
+    @Column(name = "creation_date")
+    private LocalDate creationDate;
     
 
 }
