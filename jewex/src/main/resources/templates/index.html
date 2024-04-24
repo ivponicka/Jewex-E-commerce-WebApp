@@ -1,386 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 
-    <title>Jev beauty</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" th:href="@{/css/styles.css}" />
 
-  <body>
-    <div class="holder">
-      <header class="header">
-        <div class="page">
-          <div class="header-top flex">
-            <div class="head-top-left-icon flex">
-              <h1>jev.beauty</h1>
-            </div>
-            <div class="head-top-right-icon flex">
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto"></ul>
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}" href="#">Home</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/admin}" href="#">Admin</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link"
-                      sec:authorize="isAnonymous()"
-                      th:href="@{/register}"
-                      href="#"
-                      >Register</a
-                    >
-                  </li>
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link"
-                      sec:authorize="isAnonymous()"
-                      th:href="@{/login}"
-                      href="#"
-                      >Login</a
-                    >
-                  </li>
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link"
-                      th:href="@{/cart}"
-                      sec:authorize="isAuthenticated()"
-                      href="#"
-                      >Cart (<span
-                        class="nav-link"
-                        th:text="${cartCount}"
-                        sec:authorize="isAuthenticated()"
-                        >0</span
-                      >)</a
-                    >
-                  </li>
-                  <li class="nav-item active">
-                    <a
-                      class="nav-link"
-                      sec:authorize="isAuthenticated()"
-                      th:href="@{/logout}"
-                      href="#"
-                      ><b>Logout</b></a
-                    >
-                  </li>
+  <title>Jev beauty</title>
+</head>
 
-                  <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}" href="#">About</a>
-                  </li>
-                </ul>
-              </div>
+<body>
+  <div class="holder">
+    <header class="header">
+      <div class="page">
+        <div class="header-top flex">
+          <div class="head-top-left-icon flex">
+            <h1>jev.beauty</h1>
+          </div>
+          <div class="head-top-right-icon flex">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto"></ul>
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/}" href="#">Home</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/admin}" sec:authorize="hasAuthority('ADMIN')"  href="#">Admin</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/register}" href="#">Register</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/cart}" sec:authorize="hasRole('USER') or isAuthenticated()" href="#">Cart (<span
+                      class="nav-link" th:text="${cartCount}" sec:authorize="isAuthenticated()">0</span>)</a>
+                </li>
+                
+                <li class="nav-item active">
+                  <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><b>Logout</b></a>
+                </li>
+
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/about}" href="#">About</a>
+                </li>
+              </ul>
             </div>
           </div>
-          <div class="header-main">
-            <div class="header-main-content">
-              <div class="header-main-list">
-                <div class="header-main-item" data-id="1">
-                  <h1>Rings</h1>
-                  <p class="text">
-                    Complete your ensemble with our captivating rings. From
-                    dazzling diamonds to intricate designs, explore our
-                    collection for the perfect expression of elegance and style.
-                  </p>
-                  <a th:href="@{/shop/category/1}" class="btn">Discover more</a>
-                </div>
+        </div>
+        <div class="header-main">
+          <div class="header-main-content">
+            <div class="header-main-list">
+              <div class="header-main-item" data-id="1">
+                <h1>Rings</h1>
+                <p class="text">
+                  Complete your ensemble with our captivating rings. From
+                  dazzling diamonds to intricate designs, explore our
+                  collection for the perfect expression of elegance and style.
+                </p>
+                <a th:href="@{/shop/category/1}" class="btn">Discover more</a>
+              </div>
 
-                <div class="header-main-item" data-id="2">
-                  <h1>Necklaces</h1>
-                  <p class="text">
-                    Adorn your neckline with our exquisite necklaces. From
-                    timeless classics to statement pieces, explore our
-                    collection crafted with fine materials and intricate designs
-                    to enhance your elegance and individuality.
-                  </p>
-                  <a th:href="@{/shop/category/3}" class="btn">Discover more</a>
-                </div>
+              <div class="header-main-item" data-id="2">
+                <h1>Necklaces</h1>
+                <p class="text">
+                  Adorn your neckline with our exquisite necklaces. From
+                  timeless classics to statement pieces, explore our
+                  collection crafted with fine materials and intricate designs
+                  to enhance your elegance and individuality.
+                </p>
+                <a th:href="@{/shop/category/3}" class="btn">Discover more</a>
+              </div>
 
-                <div class="header-main-item" data-id="3">
-                  <h1>Bracelets</h1>
-                  <p class="text">
-                    Accessorize your wrist with our stunning bracelets. From
-                    delicate chains to bold bangles, our collection offers
-                    timeless elegance and modern sophistication for every style.
-                  </p>
-                  <a th:href="@{/shop/category/2}" class="btn">Discover more</a>
-                </div>
+              <div class="header-main-item" data-id="3">
+                <h1>Bracelets</h1>
+                <p class="text">
+                  Accessorize your wrist with our stunning bracelets. From
+                  delicate chains to bold bangles, our collection offers
+                  timeless elegance and modern sophistication for every style.
+                </p>
+                <a th:href="@{/shop/category/2}" class="btn">Discover more</a>
+              </div>
 
-                <div class="header-main-item" data-id="4">
-                  <h1>Earrings</h1>
-                  <p class="text">
-                    Elevate your look with our elegant earrings. From sparkling
-                    studs to dangling statement pieces, explore our collection
-                    for the perfect finishing touch to any outfit.
-                  </p>
-                  <a th:href="@{/shop/category/52}" class="btn"
-                    >Discover more</a
-                  >
-                </div>
+              <div class="header-main-item" data-id="4">
+                <h1>Earrings</h1>
+                <p class="text">
+                  Elevate your look with our elegant earrings. From sparkling
+                  studs to dangling statement pieces, explore our collection
+                  for the perfect finishing touch to any outfit.
+                </p>
+                <a th:href="@{/shop/category/52}" class="btn">Discover more</a>
               </div>
             </div>
           </div>
         </div>
-        <button type="button" class="header-left-btn flex">
-          <i class="fas fa-chevron-left fa-2x"></i>
-        </button>
-        <button type="button" class="header-right-btn flex">
-          <i class="fas fa-chevron-right fa-2x"></i>
-        </button>
-      </header>
+      </div>
+      <button type="button" class="header-left-btn flex">
+        <i class="fas fa-chevron-left fa-2x"></i>
+      </button>
+      <button type="button" class="header-right-btn flex">
+        <i class="fas fa-chevron-right fa-2x"></i>
+      </button>
+    </header>
 
-      <main>
-        <section id="services">
-          <div class="page">
-            <div class="services-list flex">
-              <div class="services-item">
-                <i class="fa-solid fa-wallet fa-2x"></i>
-                <h2>Discount system</h2>
-                <p class="text">
-                  Our discount system rewards you with savings on your favorite
-                  pieces. Enjoy special offers, seasonal promotions, and
-                  exclusive discounts as our way of making luxury jewellery more
-                  accessible to you
-                </p>
-              </div>
-
-              <div class="services-item">
-                <i class="fa-solid fa-address-card fa-2x"></i>
-                <h2>Membership discounts</h2>
-                <p class="text">
-                  Unlock exclusive savings with our membership discounts. Enjoy
-                  special pricing, early access to sales, and personalized
-                  offers tailored just for you as a valued member of our
-                  jewellery community.
-                </p>
-              </div>
-
-              <div class="services-item">
-                <i class="fa-solid fa-truck-fast fa-2x"></i>
-                <h2>24h shipping</h2>
-                <p class="text">
-                  Experience lightning-fast delivery with our 24-hour shipping
-                  service. Order your favorite jewellery pieces today and have
-                  them delivered to your doorstep within just 24 hours, ensuring
-                  you can enjoy your new treasures without delay
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <hr />
-        <section id="categories">
-          <div class="page">
-            <div class="categories-list flex">
-              <div class="categories-item">
-                <img src="images/rings.jfif" alt="" />
-                <a th:href="@{/shop/category/1}" class="btn">Rings</a>
-              </div>
-
-              <div class="categories-item">
-                <img src="images/bracelet.jfif" alt="" />
-                <a th:href="@{/shop/category/2}" class="btn">Bracelets</a>
-              </div>
-
-              <div class="categories-item">
-                <img src="images/necklace.jfif" alt="" />
-                <a th:href="@{/shop/category/category.name}" class="btn"
-                  >Necklaces</a
-                >
-              </div>
-
-              <div class="categories-item">
-                <img src="images/earrings.jfif" alt="" />
-                <a th:href="@{/shop/category/52}" class="btn">Earrings</a>
-              </div>
-            </div>
-          </div>
-        </section>
-<<<<<<< HEAD
-        <section id="trending">
-          <div class="page">
-            <div class="section-heading">
-              <h2>Fresh Finds: Newest Additions to Our Collection</h2>
-              <h5><em>---- products added in the last 4 weeks ----</em></h5>
-
-=======
-        <hr />
-        <section id="trending">
-          <div class="page">
-            <div class="section-heading">
-              <h2>New arrivals</h2>
-              <div class="line"></div>
->>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
+    <main>
+      <section id="services">
+        <div class="page">
+          <div class="services-list flex">
+            <div class="services-item">
+              <i class="fa-solid fa-wallet fa-2x"></i>
+              <h2>Discount system</h2>
               <p class="text">
-                Discover our top trending jewellery pieces, curated to reflect
-                the latest styles and preferences. Stay ahead of the fashion
-                curve with our selection of must-have accessories that are
-                making waves in the world of jewellery.
+                Our discount system rewards you with savings on your favorite
+                pieces. Enjoy special offers, seasonal promotions, and
+                exclusive discounts as our way of making luxury jewellery more
+                accessible to you
               </p>
             </div>
-            <div class="trending-content">
-              <div class="trending-filter-list flex">
-                <div
-                  th:each="product, iterStat : ${newProducts.subList(0, 4)}"
-<<<<<<< HEAD
-                  class="trending-img"
-                >
-                  <img
-                    th:src="@{/images/{imageName}(imageName=${product.imageName})}"
-                    alt="Product Image"
-                    id="trending-img-main"
-                  />
-                  <h3 th:text="${product.name}" class="new-text flex"></h3>
-                  <p
-                    th:text="${product.description}"
-                    class="text"
-                    style="text-align: justify; padding: 10px 0px"
-                  ></p>
-                  <p
-                    th:text="'Price: $' + ${product.price}"
-                    class="new-text flex"
-                    style="padding: 0px"
-                  ></p>
-                </div>
-              </div>
+
+            <div class="services-item">
+              <i class="fa-solid fa-address-card fa-2x"></i>
+              <h2>Membership discounts</h2>
+              <p class="text">
+                Unlock exclusive savings with our membership discounts. Enjoy
+                special pricing, early access to sales, and personalized
+                offers tailored just for you as a valued member of our
+                jewellery community.
+              </p>
+            </div>
+
+            <div class="services-item">
+              <i class="fa-solid fa-truck-fast fa-2x"></i>
+              <h2>24h shipping</h2>
+              <p class="text">
+                Experience lightning-fast delivery with our 24-hour shipping
+                service. Order your favorite jewellery pieces today and have
+                them delivered to your doorstep within just 24 hours, ensuring
+                you can enjoy your new treasures without delay
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories">
+        <div class="page" >
+          <div class="categories-list flex">
+            <div class="categories-item">
+              <img src="images/rings.jfif" alt="" />
+              <a th:href="@{/shop/category/1}" class="btn">Rings</a>
+            </div>
+
+            <div class="categories-item">
+              <img src="images/bracelet.jfif" alt="" />
+              <a th:href="@{/shop/category/2}" class="btn">Bracelets</a>
+            </div>
+
+            <div class="categories-item">
+              <img src="images/necklace.jfif" alt="" />
+              <a th:href="@{/shop/category/category.name}" class="btn">Necklaces</a>
+            </div>
+
+            <div class="categories-item">
+              <img src="images/earrings.jfif" alt="" />
+              <a th:href="@{/shop/category/52}" class="btn">Earrings</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="trending">
+        <div class="page">
+          <div class="section-heading">
+            <h2 style="padding-bottom: 20px;">Newest Additions to Our Collection</h2>
+          <a href="#" class="btn" th:href="@{/shop}" style="text-align: center;">All products</a>
+            <p class="text">
+              Discover our top trending jewellery pieces, curated to reflect
+              the latest styles and preferences. Stay ahead of the fashion
+              curve with our selection of must-have accessories that are
+              making waves in the world of jewellery.
+            </p>
             
+          </div>
+
+          <div class="trending-content flex">
+            <div class="trending-filter-list flex">
+              <div th:each="product, iterStat : ${newProducts.subList(0, 4)}" class="trending-img">
+                <img th:src="@{/images/{imageName}(imageName=${product.imageName})}" alt="Product Image"
+                  id="trending-img-main" />
+                <h3 th:text="${product.name}" class="new-text flex"></h3>
+                <p th:text="${product.description}" class="text" style="text-align: justify; padding: 0px 15px"></p>
+                <p th:text="'Price: $' + ${product.price}" class="new-text flex" style="padding: 0px"></p>
               </div>
             </div>
+            
           </div>
-        </section>
+  
+      </div>
+         
+  </div>
+  
+  </section>
+  
   <div style="text-align: center;">
-                <a href="#" class="btn new-text flex" style="text-align: center"
-                  >All products</a
-                >
-        <section id="banner" class="flex" style="padding-top: 250px">
-=======
-                  class="trending-box"
-                >
-                  <div class="trending-img"></div>
-                  <img
-                    th:src="@{/images/{imageName}(imageName=${product.imageName})}"
-                    alt="Product Image"
-                  />
-                  <h3 th:text="${product.name}" class="new-text flex"></h3>
-                  <p th:text="${product.description}" class="new-text flex"></p>
-                  <p
-                    th:text="'Price: $' + ${product.price}"
-                    class="new-text flex"
-                  ></p>
-                </div>
+   
+    <section id="banner" class="flex" style="padding-top: 250px">
+      
+      <div class="banner-left flex">
+        <img src="images/jbox.jfif" alt="banner img" />
+      </div>
+      <div class="banner-right flex">
+        
+        <div class="section-heading">
+          <h2>About our products</h2>
+          <div class="line"></div>
+          <p class="text">
+            Explore stunning jewellery online. From elegant diamonds to
+            captivating gemstones, find the perfect piece for any occasion.
+          </p>
+          <a href="#" class="btn" th:href="@{/shop}">Discover more</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="photos-list flex">
+        <div class="photo-item">
+          <img src="images/photos.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+    <section id="map">
+      <img src="images/mapa.jpg" alt="location map" class="map" />
+    </section>
+    </main>
+
+    <footer id="footer">
+      <div class="page">
+        <div class="footer-list flex">
+          <div class="footer-item one">
+            <a href="#">
+              <img src="images/logo.jpg" alt="" class="logo" />
+            </a>
+            <p class="text">
+              Explore stunning jewellery online. From elegant diamonds to
+              captivating gemstones, find the perfect piece for any occasion.
+            </p>
+            <form>
+              <div class="form-element flex">
+                <input type="email" class="form-control" placeholder="Your e-mail" />
+                <button type="submit" class="subs-btn">Subscribe</button>
               </div>
-              <a href="#" th:href="@{/shop}" class="btn">All products</a>
-            </div>
+            </form>
           </div>
-        </section>
-        <br />
-        <hr />
-        <section id="banner" class="flex">
->>>>>>> d864c9b9015ec9442e99d5c585abb222691b7851
-          <div class="banner-left flex">
-            <img src="images/jbox.jfif" alt="banner img" />
+          <div class="footer-item">
+            <h2>OUR COMPANY</h2>
+            <ul>
+              <li><a href="#" th:href="@{/about}">About us</a></li>
+              <li><a href="#services">Our offer</a></li>
+              <li><a href="#trending">Newest Products</a></li>
+            </ul>
           </div>
-          <div class="banner-right flex">
-            <div class="section-heading">
-              <h2>About our products</h2>
-              <div class="line"></div>
-              <p class="text">
-                Explore stunning jewellery online. From elegant diamonds to
-                captivating gemstones, find the perfect piece for any occasion.
-              </p>
-              <a href="#" class="btn">Discover more</a>
-            </div>
+          <div class="footer-item">
+            <h2>Your account</h2>
+            <ul>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">Credit sales</a></li>
+              <li><a href="#">Orders</a></li>
+              <li><a href="#">Personal info</a></li>
+            </ul>
           </div>
-        </section>
-        <hr />
-        <section id="photos">
-          <div class="photos-list flex">
-            <div class="photo-item">
-              <img src="images/photos.jpg" alt="" />
-            </div>
-          </div>
-        </section>
-        <section id="map">
-          <img src="images/mapa.jpg" alt="location map" class="map" />
-        </section>
-      </main>
+        </div>
+      </div>
 
-      <footer id="footer">
+      <div class="copyright-text">
         <div class="page">
-          <div class="footer-list flex">
-            <div class="footer-item one">
-              <a href="#">
-                <img src="images/logo.jpg" alt="" class="logo" />
-              </a>
-              <p class="text">
-                Explore stunning jewellery online. From elegant diamonds to
-                captivating gemstones, find the perfect piece for any occasion.
-              </p>
-              <form>
-                <div class="form-element flex">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Your e-mail"
-                  />
-                  <button type="submit" class="subs-btn">Subscribe</button>
-                </div>
-              </form>
-            </div>
-            <div class="footer-item">
-              <h2>Products</h2>
-              <ul>
-                <li><a href="#">Prices drop</a></li>
-                <li><a href="#">New products</a></li>
-                <li><a href="#">Best sales</a></li>
-              </ul>
-            </div>
-            <div class="footer-item">
-              <h2>Information</h2>
-              <ul>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Delivery</a></li>
-                <li><a href="#">Payment</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Sitemap</a></li>
-                <li><a href="#">Stores</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-item">
-              <h2>Your account</h2>
-              <ul>
-                <li><a href="#">Addresses</a></li>
-                <li><a href="#">Credit sales</a></li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="#">Personal info</a></li>
-              </ul>
-            </div>
-          </div>
+          <p class="text">2022 - All rights reserved</p>
         </div>
+      </div>
+    </footer>
+  </div>
 
-        <div class="copyright-text">
-          <div class="page">
-            <p class="text">2022 - All rights reserved</p>
-          </div>
-        </div>
-      </footer>
-    </div>
+  <script src="js/js.js"></script>
+</body>
 
-    <script src="js/js.js"></script>
-  </body>
 </html>

@@ -29,28 +29,39 @@
                 <a class="nav-link" th:href="@{/}" href="#">Home</a>
               </li>
               <li class="nav-item active">
+                <a class="nav-link" th:href="@{/admin}" sec:authorize="hasAuthority('ADMIN')" href="#">Admin</a>
+              </li>
+              <li class="nav-item active">
                 <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/register}" href="#">Register</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
               </li>
-             
+
               <li class="nav-item active">
-                <a class="nav-link" th:href="@{/cart}" href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
+                <a class="nav-link" sec:authorize="hasRole('USER') or isAuthenticated()" th:href="@{/cart}"
+                  href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
               </li>
-               <li class="nav-item active">
-                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">Logout</a>
+              <li class="nav-item active">
+                <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><b>Logout</b></a>
               </li>
-                         <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/about}" href="#">About</a>
-                  </li>
+              <li class="nav-item active">
+                <a class="nav-link" th:href="@{/about}" href="#">About</a>
+              </li>
             </ul>
           </div>
 
     </header>
 
     <main>
-      <div class="container" style="margin-top: 40px; margin-bottom: 40px">
+  <div sec:authorize="hasAuthority('ADMIN')">
+    Hi, <span th:text="${user.getFirstName()}"></span> 
+</div>
+
+      <div class="container" id="shop" style="margin-top: 40px; margin-bottom: 40px">
         <div class="row">
           <div class="col-sm-3">
             <h4>Categories</h4>
@@ -67,14 +78,16 @@
             <div class="card" style="margin-top: 200x" th:each="product : ${products}">
               <div class="row no-gutters">
                 <div class="col-sm-5 d-flex justify-content-center">
-                  <img class="" height="150px" width="150px" style="padding-top: 25px;" th:src="@{${'/images/' + product.imageName}}"
-                    th:alt="${product.name}">
+                  <img class="" height="150px" width="150px" style="padding-top: 25px;"
+                    th:src="@{${'/images/' + product.imageName}}" th:alt="${product.name}">
                 </div>
                 <div class="col-sm-7 d-flex justify-content-center">
                   <div class="card-body">
                     <h5 class="card-title" th:text="${product.name}"></h5>
-                    <em><h6 class="card-title" th:text="${product.category.name}"></h6></em>
-                    
+                    <em>
+                      <h6 class="card-title" th:text="${product.category.name}"></h6>
+                    </em>
+
                     <h4>€ <span th:text="${product.price}"></span></h4>
                     <p th:text="${product.description}"></p>
                     <a href="#" th:href="@{/shop/viewproduct/{id}(id=${product.id})}" class="btn btn-primary">View
@@ -87,9 +100,9 @@
         </div>
       </div>
 
-<br>
+      <br>
 
-     <hr>
+      <hr>
     </main>
 
     <footer id="footer">
@@ -100,7 +113,8 @@
               <img src="images/logo.jpg" alt="" class="logo" />
             </a>
             <p class="text">
-              Explore stunning jewellery online. From elegant diamonds to captivating gemstones, find the perfect piece for any occasion.
+              Explore stunning jewellery online. From elegant diamonds to captivating gemstones, find the perfect piece
+              for any occasion.
             </p>
             <form>
               <div class="form-element flex">

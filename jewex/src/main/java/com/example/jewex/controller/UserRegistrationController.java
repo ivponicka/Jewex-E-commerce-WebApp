@@ -74,4 +74,5 @@ public class UserRegistrationController {
         model.addAttribute("users", users);
         return "users";
     }
+
 }
