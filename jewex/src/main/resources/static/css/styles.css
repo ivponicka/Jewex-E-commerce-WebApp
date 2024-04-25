@@ -558,6 +558,7 @@ button {
 .footer-list {
   flex-wrap: wrap;
   align-items: flex-start;
+  justify-content: space-around;
 }
 
 .footer-item {
@@ -567,14 +568,20 @@ button {
 .footer-item h2 {
   font-size: 16px;
   font-weight: 400;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+#subscribe {
+  text-align: -moz-center;
 }
 
 .footer-item.one a {
   display: block;
-  padding-bottom: 22px;
 }
-
+.logo-footer {
+  width: 220px;
+}
 .form-element {
   margin-top: 40px;
   border: 2px solid grey;
@@ -618,7 +625,7 @@ button {
 }
 
 .footer-item.one {
-  width: calc(32% - 33px);
+  width: 400px;
 }
 
 .footer-item:not(.footer-item.one) {
@@ -631,7 +638,7 @@ button {
 }
 
 .copyright-text .page {
-  padding: 15px 0;
+  padding: 4px 0;
   text-align: center;
 }
 

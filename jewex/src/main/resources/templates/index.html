@@ -29,22 +29,26 @@
                   <a class="nav-link" th:href="@{/}" href="#">Home</a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" th:href="@{/admin}" sec:authorize="hasAuthority('ADMIN')"  href="#">Admin</a>
-                </li>
-                <li class="nav-item active">
                   <a class="nav-link" th:href="@{/shop}" href="#">Shop</a>
                 </li>
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/admin}" sec:authorize="hasAuthority('ADMIN')" href="#">Admin</a>
+                </li>
+
                 <li class="nav-item active">
                   <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/register}" href="#">Register</a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" th:href="@{/cart}" sec:authorize="hasRole('USER') or isAuthenticated()" href="#">Cart (<span
-                      class="nav-link" th:text="${cartCount}" sec:authorize="isAuthenticated()">0</span>)</a>
+                     <li class="nav-item active">
+                  <a class="nav-link" sec:authorize="hasRole('USER')" th:href="@{/users}" href="#">My account</a>
                 </li>
-                
+                <li class="nav-item active">
+                  <a class="nav-link" th:href="@{/cart}" sec:authorize="hasRole('USER')" href="#">Cart (<span
+                      class="nav-link" th:text="${cartCount}">0</span>)</a>
+                </li>
+
                 <li class="nav-item active">
                   <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#"><b>Logout</b></a>
                 </li>
@@ -152,7 +156,7 @@
       </section>
 
       <section id="categories">
-        <div class="page" >
+        <div class="page">
           <div class="categories-list flex">
             <div class="categories-item">
               <img src="images/rings.jfif" alt="" />
@@ -180,44 +184,47 @@
         <div class="page">
           <div class="section-heading">
             <h2 style="padding-bottom: 20px;">Newest Additions to Our Collection</h2>
-          <a href="#" class="btn" th:href="@{/shop}" style="text-align: center;">All products</a>
+            <a href="#" class="btn" th:href="@{/shop}" style="text-align: center;">All products</a>
             <p class="text">
               Discover our top trending jewellery pieces, curated to reflect
               the latest styles and preferences. Stay ahead of the fashion
               curve with our selection of must-have accessories that are
               making waves in the world of jewellery.
             </p>
-            
+
           </div>
 
           <div class="trending-content flex">
             <div class="trending-filter-list flex">
-              <div th:each="product, iterStat : ${newProducts.subList(0, 4)}" class="trending-img">
+
+              <div th:if="${not #lists.isEmpty(newProducts)}" th:each="product, iterStat : ${newProducts.subList(0, 4)}"
+                class="trending-img">
                 <img th:src="@{/images/{imageName}(imageName=${product.imageName})}" alt="Product Image"
                   id="trending-img-main" />
                 <h3 th:text="${product.name}" class="new-text flex"></h3>
                 <p th:text="${product.description}" class="text" style="text-align: justify; padding: 0px 15px"></p>
                 <p th:text="'Price: $' + ${product.price}" class="new-text flex" style="padding: 0px"></p>
               </div>
+
             </div>
-            
+
           </div>
-  
-      </div>
-         
+
+        </div>
+
   </div>
-  
+
   </section>
-  
+
   <div style="text-align: center;">
-   
+
     <section id="banner" class="flex" style="padding-top: 250px">
-      
+
       <div class="banner-left flex">
         <img src="images/jbox.jfif" alt="banner img" />
       </div>
       <div class="banner-right flex">
-        
+
         <div class="section-heading">
           <h2>About our products</h2>
           <div class="line"></div>
@@ -247,13 +254,13 @@
         <div class="footer-list flex">
           <div class="footer-item one">
             <a href="#">
-              <img src="images/logo.jpg" alt="" class="logo" />
+              <img src="images/logo.jpg" alt="" class="logo-footer" />
             </a>
             <p class="text">
               Explore stunning jewellery online. From elegant diamonds to
               captivating gemstones, find the perfect piece for any occasion.
             </p>
-            <form>
+            <form id="subscribe">
               <div class="form-element flex">
                 <input type="email" class="form-control" placeholder="Your e-mail" />
                 <button type="submit" class="subs-btn">Subscribe</button>
@@ -266,15 +273,6 @@
               <li><a href="#" th:href="@{/about}">About us</a></li>
               <li><a href="#services">Our offer</a></li>
               <li><a href="#trending">Newest Products</a></li>
-            </ul>
-          </div>
-          <div class="footer-item">
-            <h2>Your account</h2>
-            <ul>
-              <li><a href="#">Shop</a></li>
-              <li><a href="#">Credit sales</a></li>
-              <li><a href="#">Orders</a></li>
-              <li><a href="#">Personal info</a></li>
             </ul>
           </div>
         </div>

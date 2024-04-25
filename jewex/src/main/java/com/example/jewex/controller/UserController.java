@@ -3,7 +3,6 @@ package com.example.jewex.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.jewex.global.GlobalData;
 import com.example.jewex.model.Product;
-import com.example.jewex.model.User;
-import com.example.jewex.repository.UserRepository;
 import com.example.jewex.service.CategoryService;
 import com.example.jewex.service.ProductService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @Controller
@@ -63,6 +62,23 @@ public class UserController {
             model.addAttribute("cartCount", GlobalData.cart.size());
             return "view_product";
         }
+
+        @GetMapping("/myAccount")
+         public String myAccount(){
+            return "users";
+        }
+
+        @GetMapping("/users/orders")
+        public String userOrders() {
+            return "users_orders";
+        }
+
+          @GetMapping("/users/settings")
+        public String userSettings() {
+            return "users_settings";
+        }
+        
+        
   
 }
 

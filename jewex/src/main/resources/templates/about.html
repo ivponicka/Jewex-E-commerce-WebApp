@@ -43,8 +43,8 @@
                                         href="#"><b>Logout</b></a>
                                 </li>
                                 <li class="nav-item active">
-                <a class="nav-link" sec:authorize="hasRole('USER') or isAuthenticated()" th:href="@{/cart}" href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
-              </li>
+                                <a class="nav-link" sec:authorize="hasRole('USER')" th:href="@{/cart}" href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
+                                </li>
                                 <li class="nav-item active">
                                     <a class="nav-link" th:href="@{/about}" href="#">About</a>
                                 </li>
@@ -56,10 +56,10 @@
                 
                     <div class="about-us">
 
-                        <p>At Jewex, we redefine elegance with our exquisite collection of high-quality jewellery. As an
+                        <p style="line-height:30px">At Jewex, we redefine elegance with our exquisite collection of high-quality jewellery. As an
                             online store dedicated to crafting timeless pieces that resonate with sophistication and
                             style, we curate each item with meticulous attention to detail.</p>
-                            <p>Our commitment to quality is unwavering. From brilliant diamonds to lustrous gemstones, every piece in our collection undergoes rigorous inspection to ensure it meets the highest standards. We believe that jewellery is not just an accessory, but a reflection of individuality and beauty.</p>
+                            <p style="line-height:30px">Our commitment to quality is unwavering. From brilliant diamonds to lustrous gemstones, every piece in our collection undergoes rigorous inspection to ensure it meets the highest standards. We believe that jewellery is not just an accessory, but a reflection of individuality and beauty.</p>
                     </div>
                 
                 <section id="photos">
@@ -75,61 +75,40 @@
                 </main>
 
                 <footer id="footer">
-                    <div class="page">
-                        <div class="footer-list flex">
-                            <div class="footer-item one">
-                                <a href="#">
-                                    <img src="images/logo.jpg" alt="" class="logo" />
-                                </a>
-                                <p class="text">
-                                    Explore stunning jewellery online. From elegant diamonds to
-                                    captivating gemstones, find the perfect piece for any occasion.
-                                </p>
-                                <form>
-                                    <div class="form-element flex">
-                                        <input type="email" class="form-control" placeholder="Your e-mail" />
-                                        <button type="submit" class="subs-btn">Subscribe</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="footer-item">
-                                <h2>Products</h2>
-                                <ul>
-                                    <li><a href="#">Prices drop</a></li>
-                                    <li><a href="#">New products</a></li>
-                                    <li><a href="#">Best sales</a></li>
-                                </ul>
-                            </div>
-                            <div class="footer-item">
-                                <h2>Information</h2>
-                                <ul>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Delivery</a></li>
-                                    <li><a href="#">Payment</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Sitemap</a></li>
-                                    <li><a href="#">Stores</a></li>
-                                </ul>
-                            </div>
+      <div class="page">
+        <div class="footer-list flex">
+          <div class="footer-item one">
+            <a href="#">
+              <img src="images/logo.jpg" alt="" class="logo-footer" />
+            </a>
+            <p class="text">
+              Explore stunning jewellery online. From elegant diamonds to
+              captivating gemstones, find the perfect piece for any occasion.
+            </p>
+            <form id="subscribe">
+              <div class="form-element flex">
+                <input type="email" class="form-control" placeholder="Your e-mail" />
+                <button type="submit" class="subs-btn">Subscribe</button>
+              </div>
+            </form>
+          </div>
+          <div class="footer-item">
+            <h2>OUR COMPANY</h2>
+            <ul>
+              <li><a href="#" th:href="@{/about}">About us</a></li>
+              <li><a href="#services">Our offer</a></li>
+              <li><a href="#trending">Newest Products</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-                            <div class="footer-item">
-                                <h2>Your account</h2>
-                                <ul>
-                                    <li><a href="#">Addresses</a></li>
-                                    <li><a href="#">Credit sales</a></li>
-                                    <li><a href="#">Orders</a></li>
-                                    <li><a href="#">Personal info</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="copyright-text">
-                        <div class="page">
-                            <p class="text">2022 - All rights reserved</p>
-                        </div>
-                    </div>
-                </footer>
+      <div class="copyright-text">
+        <div class="page">
+          <p class="text">2022 - All rights reserved</p>
+        </div>
+      </div>
+    </footer>
             </div>
 
             <script src="js/js.js"></script>

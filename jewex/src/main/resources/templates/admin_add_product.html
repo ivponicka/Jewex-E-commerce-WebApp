@@ -50,7 +50,7 @@
 
     <main>
       <div class="jumbotron text-center">
-        <div class="display-4">Add a new category</div>
+        <div class="display-4">Manage your products</div>
       </div>
 
 
@@ -79,7 +79,7 @@
 
               <div class="form-group">
                 <label for="description">Description:</label>
-                <textarea name="description" id="description" rows="3" class="form-control"></textarea>
+                <textarea name="description" id="description" th:text="${productDTO.description}" rows="3" class="form-control"></textarea>
               </div>
             </div>
             <div class="col-sm-5">
@@ -87,7 +87,7 @@
               <div class="custom-file">
                 <label for="productImage" class="custom-file-label">Choose file</label>
                 <input type="file" class="custom-file-input" name="productImage" accept="image/jpeg, image/png"
-                  id="productImage">
+                  id="productImage" onchange="previewImage(event)">
               </div>
               <div class="form-group">
                 <br> <br> 
@@ -127,15 +127,13 @@
         <div class="footer-list flex">
           <div class="footer-item one">
             <a href="#">
-              <img src="images/logo.jpg" alt="" class="logo" />
+              <img src="images/logo.jpg" alt="" class="logo-footer" />
             </a>
             <p class="text">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Accusamus maxime omnis iusto illo numquam non, magni quam ipsam
-              minima blanditiis ad asperiores velit culpa sint commodi,
-              laborum, minus aliquam enim.
+              Explore stunning jewellery online. From elegant diamonds to
+              captivating gemstones, find the perfect piece for any occasion.
             </p>
-            <form>
+            <form id="subscribe">
               <div class="form-element flex">
                 <input type="email" class="form-control" placeholder="Your e-mail" />
                 <button type="submit" class="subs-btn">Subscribe</button>
@@ -143,45 +141,33 @@
             </form>
           </div>
           <div class="footer-item">
-            <h2>Products</h2>
+            <h2>OUR COMPANY</h2>
             <ul>
-              <li><a href="#">Prices drop</a></li>
-              <li><a href="#">New products</a></li>
-              <li><a href="#">Best sales</a></li>
-            </ul>
-          </div>
-          <div class="footer-item">
-            <h2>Information</h2>
-            <ul>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Delivery</a></li>
-              <li><a href="#">Payment</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Sitemap</a></li>
-              <li><a href="#">Stores</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-item">
-            <h2>Your account</h2>
-            <ul>
-              <li><a href="#">Addresses</a></li>
-              <li><a href="#">Credit sales</a></li>
-              <li><a href="#">Orders</a></li>
-              <li><a href="#">Personal info</a></li>
+              <li><a href="#" th:href="@{/about}">About us</a></li>
+              <li><a href="#services">Our offer</a></li>
+              <li><a href="#trending">Newest Products</a></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="copyright-text">
-        <div class="container">
+        <div class="page">
           <p class="text">2022 - All rights reserved</p>
         </div>
       </div>
     </footer>
   </div>
-
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var imgPreview = document.getElementById('imgPreview');
+            imgPreview.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
   <script src="js/js.js"></script>
 </body>
 
