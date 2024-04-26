@@ -5,14 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+
+import com.example.jewex.dto.UserRegistrationDTO;
 import com.example.jewex.global.GlobalData;
 import com.example.jewex.model.Product;
+import com.example.jewex.model.User;
 import com.example.jewex.service.CategoryService;
 import com.example.jewex.service.ProductService;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.example.jewex.service.UserService;
+
+import jakarta.validation.Valid;
 
 
 
@@ -24,6 +31,8 @@ public class UserController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    UserService userService;
 
 
     @GetMapping({ "/", "/home"})
@@ -73,11 +82,31 @@ public class UserController {
             return "users_orders";
         }
 
-          @GetMapping("/users/settings")
+     @GetMapping("/users/settings")
         public String userSettings() {
             return "users_settings";
         }
+
         
+        @GetMapping("/users/save")
+        public String userSettingsUpdate(@Valid @ModelAttribute("user") UserRegistrationDTO userRegistrationDTO,
+                               BindingResult result,
+                               Model model) {
+                User existingUser = userService.findUserByEmail(userRegistrationDTO.getEmail());
+
+        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
+            result.rejectValue("email", null,
+                    "There is already an account registered with the same email");
+        }
+
+        if(result.hasErrors()){
+            model.addAttribute("user", userRegistrationDTO);
+            return "/user_settings";
+        }
+
+        userService.saveUser(userRegistrationDTO);
+        return "redirect:/user_settings?success";
+    }
         
   
 }

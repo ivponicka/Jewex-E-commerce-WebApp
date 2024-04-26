@@ -12,6 +12,7 @@ import com.example.jewex.repository.UserRepository;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -72,5 +73,11 @@ public class UserServiceImp implements UserService {
         Role role = new Role();
         role.setName("USER");
         return roleRepository.save(role);
+    }
+
+    @Override
+    public User getUserById(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        return userOptional.orElse(null);
     }
 }

@@ -40,9 +40,7 @@
               <li class="nav-item active">
                 <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">Login</a>
               </li>
-              <li class="nav-item active">
-                  <a class="nav-link" sec:authorize="hasAuthority('USER')" th:href="@{/myAccount}" href="#">My account</a>
-                </li>
+    
               <li class="nav-item active">
                 <a class="nav-link" sec:authorize="hasRole('USER') or isAuthenticated()" th:href="@{/cart}"
                   href="#">Cart (<span th:text="${cartCount}">0</span>)</a>
